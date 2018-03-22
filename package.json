@@ -1,0 +1,25 @@
+{
+  "name": "lines",
+  "version": "1.0.0",
+  "description": "Mapping numbers to line length",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VA602AA-master/lines.git"
+  },
+  "keywords": [
+    "d3.js",
+    "data",
+    "join",
+    "excercise"
+  ],
+  "author": "rinziv <rinzivillo@isti.cnr.it>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VA602AA-master/lines/issues"
+  },
+  "homepage": "https://github.com/VA602AA-master/lines#readme"
+}
