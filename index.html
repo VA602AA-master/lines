@@ -8,36 +8,65 @@
 </head>
 <body>
 <h1>Represent lines by numbers</h1>
+<button type="button" name="button" onClick="reshuffle()">Shuffle</button>
 <div id="viz">
 
 </div>
 <script>
-    let numbers = [5,10,15,20,25,110,30, 47];
+    let numbers = [10,20,30,50,7];
 
     let svg = d3.select("#viz")
         .append("svg")
         .attr("width", 200)
         .attr("height", 200);
 
-    let lines = svg.selectAll("line")
-        .data(numbers);
+    function reshuffle(){
 
-    // <line x1='0' y1='0' x2='10' y2='10'/>
-    lines.enter()
-        .append("line")
-        .attr("stroke-weight",1)
-        .attr("stroke", "black")
-        .attr("x1", 10)
-        .attr("x2", function(d,i){
-            return 10 + d;
-        })
-        .attr("y1",function(d,i){
-            return 10 + i*10;
-        })
-        .attr("y2",function(d,i){
-            return 10 + i*10;
-        })
-    ;
+      numbers = d3.range(3 + Math.round(Math.random()*10))
+        .map(function(d){
+          return Math.round(Math.random()*100);
+        });
+
+      // Bad way to do the same thing
+
+      // numbers.length = 3 + Math.round(Math.random()*10);
+      // for(let i =0; i < numbers.length; i++){
+      //   numbers[i] = Math.round(Math.random()*100);
+      // }
+      console.log(numbers);
+      redraw();
+    }
+
+    function redraw() {
+      let lines = svg.selectAll("line")
+          .data(numbers);
+
+      // <line x1='0' y1='0' x2='10' y2='10'/>
+      lines.enter()     // ENTER
+          .append("line")
+          .attr("stroke-weight",1)
+          .attr("stroke", "black");
+
+      // EXIT
+      lines.exit().remove();
+
+      svg.selectAll('line')   //UPDATE
+          .attr("x1", 10)
+          .attr("x2", function(d,i){
+              return 10 + d;
+          })
+          .attr("y1",function(d,i){
+              return 10 + i*10;
+          })
+          .attr("y2",function(d,i){
+              return 10 + i*10;
+          })
+      ;
+    }
+
+
+    redraw();
+
 </script>
 </body>
 </html>
