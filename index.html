@@ -94,6 +94,27 @@
             })
         ;
 
+        let texts = svg.selectAll('text')
+          .data(selection.datum());
+
+        texts.enter()
+          .append('text');
+
+
+        texts.exit().remove();
+
+
+
+        svg.selectAll('text')
+          .attr('x',xScale)
+          .attr('font-size',10)
+          .attr('font-family','sans-serif')
+          .attr('y',function(d,i){
+            return yScale(i)
+          })
+          .attr('dy', 3)
+          .text(function(d){return d});
+
 
 
       }
