@@ -47,6 +47,9 @@
       .domain([0,13])
       .range([0,200]);
 
+    let axis = d3.axisBottom(xScale);
+
+
     let svg = null;
 
     function me(selection){
@@ -56,8 +59,14 @@
              .attr("width", width)
              .attr("height", height);
 
+         svg.append('g')
+          .attr('transform','translate(10,180)')
+          .call(axis);
+
          svg = svg.append('g')
            .attr('transform','translate(10,10)');
+
+
       }
 
         let lines = svg.selectAll("line")
@@ -84,12 +93,19 @@
                 return yScale(i);
             })
         ;
+
+
+
       }
 
       me.width = function(arg){
         if(!arguments.length)
           return width;
+
+
         width = arg;
+
+        xScale.range([0,width-10*2]);
         return me;
       }
 
