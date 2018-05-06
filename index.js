@@ -1,4 +1,4 @@
-let numbers = [10, 20, 30, 50, 7];
+let numbers = [];
 let lc = lineComponent()
   .width(200);
 console.log(lc.width());
@@ -8,8 +8,6 @@ function redraw() {
     .datum(numbers)
     .call(lc);
 }
-
-redraw();
 
 function reshuffle() {
   numbers = d3.range(3 + Math.round(Math.random() * 10))
@@ -26,3 +24,5 @@ function reshuffle() {
   console.log(numbers);
   redraw();
 }
+
+reshuffle();
